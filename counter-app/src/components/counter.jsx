@@ -6,6 +6,11 @@ class Counter extends Component {
     tags: ["tag1", "tag2", "tag3"],
   };
 
+  // constructor() {
+  //   super();
+  //   this.handleIncrement = this.handleIncrement.bind(this);
+  // }
+
   render() {
     return (
       <React.Fragment>
@@ -22,9 +27,9 @@ class Counter extends Component {
     );
   }
 
-  handleIncrement() {
-    console.log("Increment Cliked");
-  }
+  handleIncrement = () => {
+    console.log("Increment Cliked", this);
+  };
 
   renderTags() {
     if (this.state.tags.length === 0) return <p>There are no tags!</p>;
