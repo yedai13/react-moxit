@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import Like from "../common/like";
-import ListGroup from "../common/listGroup";
+import Like from "./common/like";
+import ListGroup from "./common/listGroup";
 import { getMovies } from "../services/fakeMovieService";
 import { getGenres } from "../services/fakeGenreService";
-import Pagination from "../common/pagination";
+import Pagination from "./common/pagination";
 import { paginate } from "../utils/paginate";
 
 class Movies extends Component {
