@@ -5,7 +5,6 @@ import { getMovies } from "../services/fakeMovieService";
 import { getGenres } from "../services/fakeGenreService";
 import Pagination from "../common/pagination";
 import { paginate } from "../utils/paginate";
-import { filter } from "lodash";
 
 class Movies extends Component {
   state = {
@@ -16,7 +15,8 @@ class Movies extends Component {
   };
 
   componentDidMount() {
-    this.setState({ movies: getMovies(), genres: getGenres() });
+    const genres = [{ name: "All Genres" }, ...getGenres()];
+    this.setState({ movies: getMovies(), genres });
   }
 
   render() {
@@ -30,9 +30,10 @@ class Movies extends Component {
 
     if (count === 0) return <p>There are no movies in the database.</p>;
 
-    const filtered = selectedGenre
-      ? allMovies.filter((m) => m.genre._id == selectedGenre._id)
-      : allMovies;
+    const filtered =
+      selectedGenre && selectedGenre._id
+        ? allMovies.filter((m) => m.genre._id == selectedGenre._id)
+        : allMovies;
     const movies = paginate(filtered, currentPage, pageSize);
 
     return (
@@ -112,7 +113,7 @@ class Movies extends Component {
   };
 
   handleGenreSelect = (genre) => {
-    this.setState({ selectedGenre: genre });
+    this.setState({ selectedGenre: genre, currentPage: 1 });
   };
 }
 
