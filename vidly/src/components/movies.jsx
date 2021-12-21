@@ -95,7 +95,7 @@ class Movies extends Component {
 
     const filtered =
       selectedGenre && selectedGenre._id
-        ? allMovies.filter((m) => m.genre._id == selectedGenre._id)
+        ? allMovies.filter((m) => m.genre._id === selectedGenre._id)
         : allMovies;
 
     const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
