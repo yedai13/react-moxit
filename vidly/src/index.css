@@ -20,3 +20,19 @@ code {
 .clickable {
   cursor: pointer;
 }
+
+.bg-dark {
+  background-color: #343a40;
+}
+
+li.list-group-item.list-group-item-action.active {
+  background-color: #343a40;
+  border-color: #343a40;
+}
+
+.page-item.active .page-link {
+  z-index: 1;
+  color: #fff;
+  background-color: #343a40 !important;
+  border-color: #343a40 !important;
+}
