@@ -72,7 +72,9 @@ class LoginForm extends Component {
             onChange={this.handleChange}
             error={errors.password}
           />
-          <button className="btn btn-dark">Login</button>
+          <button disabled={this.validate()} className="btn btn-dark">
+            Login
+          </button>
         </form>
       </div>
     );
