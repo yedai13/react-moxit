@@ -1,6 +1,7 @@
 import http from "./httpService";
+import { apiUrl } from "../config.json";
 
-const apiEndpoind = "http://localhost:3900/api/movies";
+const apiEndpoind = apiUrl + "/movies";
 
 export function getMovies() {
   return http.get(apiEndpoind);
