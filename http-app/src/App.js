@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import http from "./services/httpService";
 import "./App.css";
-
-const apiEndpoit = "https://jsonplaceholder.typicode.com/posts";
+import config from "./config.json";
 
 class App extends Component {
   state = {
@@ -11,14 +10,14 @@ class App extends Component {
 
   async componentDidMount() {
     //pending > resolved (success) or rejected (failure)
-    const { data: posts } = await http.get(apiEndpoit);
+    const { data: posts } = await http.get(config.apiEndpoint);
 
     this.setState({ posts });
   }
 
   handleAdd = async () => {
     const obj = { title: "a", body: "b" };
-    const { data: post } = await http.post(apiEndpoit, obj);
+    const { data: post } = await http.post(config.apiEndpoint, obj);
 
     const posts = [post, ...this.state.posts];
     this.setState({ posts });
@@ -26,7 +25,7 @@ class App extends Component {
 
   handleUpdate = async (post) => {
     post.title = "UPDATE";
-    await http.put(`${apiEndpoit}/${post.id}`, post);
+    await http.put(`${config.apiEndpoint}/${post.id}`, post);
 
     const posts = [...this.state.posts];
     const index = posts.indexOf(post);
@@ -41,7 +40,7 @@ class App extends Component {
     this.setState({ posts });
 
     try {
-      await http.delete(`${apiEndpoit}/${post.id}`);
+      await http.delete(`${config.apiEndpoint}/${post.id}`);
       // await axios.delete("asd" + apiEndpoit + "/0");
       // throw new Error(""); para hacer fallar la llamada al sv.
     } catch (ex) {
