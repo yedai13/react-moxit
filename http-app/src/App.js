@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import { ToastContainer } from "react-toastify";
 import http from "./services/httpService";
-import "./App.css";
 import config from "./config.json";
+import "react-toastify/dist/ReactToastify.css";
+import "./App.css";
 
 class App extends Component {
   state = {
@@ -40,7 +42,7 @@ class App extends Component {
     this.setState({ posts });
 
     try {
-      await http.delete(`${config.apiEndpoint}/${post.id}`);
+      await http.delete(`asdasdasd${config.apiEndpoint}/${post.id}`);
       // await axios.delete("asd" + apiEndpoit + "/0");
       // throw new Error(""); para hacer fallar la llamada al sv.
     } catch (ex) {
@@ -53,6 +55,7 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
+        <ToastContainer />
         <button className="btn btn-primary" onClick={this.handleAdd}>
           Add
         </button>
