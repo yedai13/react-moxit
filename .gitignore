@@ -111,6 +111,7 @@ dist
 /coverage
 
 # production
+/vidly/build
 /build
 
 # misc
